@@ -1,3 +1,16 @@
+create database EscolaDB;
+use EscolaDB;
 
+create table atividade_complementar (
+	id bigint identity(1,1) not null,
+	nome_aluno varchar(100) not null,
+	titulo_atividade varchar(150) not null,
+	instituicao varchar(100) not null,
+	horas_declaradas int not null,
+	horas_aprovadas int not null default 0,
+	status varchar(20) not null default 'PENDENTE',
+	constraint pk_atividade_complementar primary key(id),
+	constraint ck_status check (status in ('PENDENTE', 'DEFERIDA', 'INDEFERIDA'))
+);
 
 
